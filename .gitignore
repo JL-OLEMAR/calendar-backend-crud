@@ -19,7 +19,6 @@ node_modules
 
 *.log
 *.gz
-.npm
 
 
 # Coveralls
