@@ -1,0 +1,43 @@
+{
+  "name": "10-calendar-backend",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "lint": "standard --fix ."
+  },
+  "keywords": [
+    "calendar",
+    "backend",
+    "express",
+    "mongodb",
+    "mongoose"
+  ],
+  "author": "José Olemar",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/JL-OLEMAR/calendar-backend-crud/",
+    "type": "git"
+  },
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "cors": "2.8.5",
+    "dotenv": "8.2.0",
+    "express": "4.17.1",
+    "express-validator": "6.10.0",
+    "jsonwebtoken": "8.5.1",
+    "moment": "2.29.1",
+    "mongoose": "5.11.18"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.15",
+    "standard": "16.0.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
+  }
+}
