@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
+    "build": "echo 'Building...'",
     "lint": "standard --fix ."
   },
   "keywords": [
