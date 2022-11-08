@@ -30,4 +30,5 @@ coverage
 # Benchmarking
 benchmarks/graphs
 
-
+/dist
+.vscode/

@@ -1,29 +1,19 @@
 const express = require('express')
-const cors = require('cors')
 require('dotenv').config()
 
-const { dbConnection } = require('./database/config')
-
-// Crear el servidor de express
+// Create express server
 const app = express()
 
-// Base de datos
-dbConnection()
-
-// CORS
-app.use(cors({ origin: true }))
-
-// Directorio publico
+// Public directory
 app.use(express.static('public'))
 
-// Lectura y parseo del body
+// Reading and parsing the body
 app.use(express.json())
 
-// Rutas
+// Routes
 app.use('/api/auth', require('./routes/auth'))
-app.use('/api/events', require('./routes/events'))
 
-// Escuchar peticiones
+// Listen to requests
 app.listen(process.env.PORT, () => {
-  console.log(`Servidor corriendo en puerto ${process.env.PORT}`)
+  console.log(`Server running on port ${process.env.PORT}`)
 })
