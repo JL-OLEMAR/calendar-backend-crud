@@ -1,11 +1,17 @@
+/* eslint-disable import/first */
 import express from 'express'
 import * as dotenv from 'dotenv'
-import { router as authRouter } from './routes/auth.js'
 
 dotenv.config()
 
+import { connectionBD } from './database/config.js'
+import { router as authRouter } from './routes/auth.js'
+
 // Create express server
 const app = express()
+
+// Database
+connectionBD()
 
 // Public directory
 app.use(express.static('public'))
