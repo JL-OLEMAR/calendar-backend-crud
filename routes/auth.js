@@ -1,18 +1,14 @@
 /*
-  Rutas de Usuarios / Auth
+  User routes / Auth
   host + /api/auth
 */
 
-const { Router } = require('express')
-const { check } = require('express-validator')
-const router = Router()
+import { Router } from 'express'
+import { check } from 'express-validator'
+import { validateFields } from '../middlewares/validate-fields.js'
+import { createUser, loginUser, revalidateToken } from '../controllers/auth.js'
 
-const { validateFields } = require('../middlewares/validate-fields')
-const {
-  createUser,
-  loginUser,
-  RevalidateToken
-} = require('../controllers/auth')
+const router = Router()
 
 router.post(
   '/new',
@@ -27,10 +23,10 @@ router.post(
   ],
   createUser
 )
+
 router.post(
   '/',
   [
-    // middlewares
     check('email', 'Invalid email').isEmail(),
     check('password', 'Password must be six characters long').isLength({
       min: 6
@@ -39,6 +35,7 @@ router.post(
   ],
   loginUser
 )
-router.get('/renew', RevalidateToken)
 
-module.exports = router
+router.get('/renew', revalidateToken)
+
+export { router }

@@ -1,4 +1,4 @@
-const { response } = require('express')
+import { response } from 'express'
 
 const createUser = (req, res = response) => {
   const { name, email, password } = req.body
@@ -23,15 +23,11 @@ const loginUser = (req, res = response) => {
   })
 }
 
-const RevalidateToken = (req, res = response) => {
+const revalidateToken = (req, res = response) => {
   res.json({
     ok: true,
     msg: 'renew'
   })
 }
 
-module.exports = {
-  createUser,
-  loginUser,
-  RevalidateToken
-}
+export { createUser, loginUser, revalidateToken }

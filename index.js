@@ -1,5 +1,8 @@
-const express = require('express')
-require('dotenv').config()
+import express from 'express'
+import * as dotenv from 'dotenv'
+import { router as authRouter } from './routes/auth.js'
+
+dotenv.config()
 
 // Create express server
 const app = express()
@@ -11,7 +14,7 @@ app.use(express.static('public'))
 app.use(express.json())
 
 // Routes
-app.use('/api/auth', require('./routes/auth'))
+app.use('/api/auth', authRouter)
 
 // Listen to requests
 app.listen(process.env.PORT, () => {
