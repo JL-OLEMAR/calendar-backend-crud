@@ -6,6 +6,7 @@
 import { Router } from 'express'
 import { check } from 'express-validator'
 import { validateFields } from '../middlewares/validate-fields.js'
+import { validateJWT } from '../middlewares/validate-jwt.js'
 import { createUser, loginUser, revalidateToken } from '../controllers/auth.js'
 
 const router = Router()
@@ -36,6 +37,6 @@ router.post(
   loginUser
 )
 
-router.get('/renew', revalidateToken)
+router.get('/renew', [validateJWT], revalidateToken)
 
 export { router }
