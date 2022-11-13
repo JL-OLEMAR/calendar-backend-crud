@@ -3,7 +3,7 @@ import cors from 'cors'
 import * as dotenv from 'dotenv'
 
 import { connectionBD } from './database/config.js'
-import { router as authRouter } from './routes/auth.js'
+import { router as usersRouter } from './routes/users.js'
 
 dotenv.config()
 
@@ -23,7 +23,7 @@ app.use(express.static('public'))
 app.use(express.json())
 
 // Routes
-app.use('/api/auth', authRouter)
+app.use('/api/user', usersRouter)
 
 // Listen to requests
 app.listen(process.env.PORT, () => {

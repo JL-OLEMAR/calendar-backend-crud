@@ -1,13 +1,14 @@
 /*
-  User routes / Auth
-  host + /api/auth
+  Users routes / Auth
+  host + /api/user
 */
 
 import { Router } from 'express'
 import { check } from 'express-validator'
+
 import { validateFields } from '../middlewares/validate-fields.js'
 import { validateJWT } from '../middlewares/validate-jwt.js'
-import { createUser, loginUser, revalidateToken } from '../controllers/auth.js'
+import { createUser, loginUser, revalidateToken } from '../controllers/user.js'
 
 const router = Router()
 
