@@ -4,6 +4,7 @@ import * as dotenv from 'dotenv'
 
 import { connectionBD } from './database/config.js'
 import { router as usersRouter } from './routes/users.js'
+import { router as eventsRouter } from './routes/events.js'
 
 dotenv.config()
 
@@ -24,6 +25,7 @@ app.use(express.json())
 
 // Routes
 app.use('/api/auth', usersRouter)
+app.use('/api/events', eventsRouter)
 
 // Listen to requests
 app.listen(process.env.PORT, () => {
