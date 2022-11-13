@@ -1,10 +1,12 @@
 import { response } from 'express'
 import { EventModel } from '../models/event.js'
 
-const getEvents = (req, res = response) => {
+const getEvents = async (req, res = response) => {
+  const events = await EventModel.find().populate('user', 'name')
+
   res.json({
     ok: true,
-    msg: 'getEvents'
+    events
   })
 }
 
