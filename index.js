@@ -1,17 +1,20 @@
-/* eslint-disable import/first */
 import express from 'express'
+import cors from 'cors'
 import * as dotenv from 'dotenv'
-
-dotenv.config()
 
 import { connectionBD } from './database/config.js'
 import { router as authRouter } from './routes/auth.js'
+
+dotenv.config()
 
 // Create express server
 const app = express()
 
 // Database
 connectionBD()
+
+// CORS
+app.use(cors())
 
 // Public directory
 app.use(express.static('public'))
