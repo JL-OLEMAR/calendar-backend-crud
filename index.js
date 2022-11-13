@@ -23,7 +23,7 @@ app.use(express.static('public'))
 app.use(express.json())
 
 // Routes
-app.use('/api/user', usersRouter)
+app.use('/api/auth', usersRouter)
 
 // Listen to requests
 app.listen(process.env.PORT, () => {

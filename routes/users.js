@@ -1,6 +1,6 @@
 /*
   Users routes / Auth
-  host + /api/user
+  host + /api/auth
 */
 
 import { Router } from 'express'
