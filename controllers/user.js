@@ -28,7 +28,7 @@ const createUser = async (req, res = response) => {
     // Generate JWT
     const token = await generateJWT(user.id, user.name)
 
-    res.status(201).json({
+    return res.status(201).json({
       ok: true,
       uid: user.id,
       name: user.name,
@@ -36,7 +36,7 @@ const createUser = async (req, res = response) => {
     })
   } catch (error) {
     console.log(error)
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       msg: 'Please contact the administrator.'
     })
@@ -68,7 +68,7 @@ const loginUser = async (req, res = response) => {
     // Generate JWT
     const token = await generateJWT(user.id, user.name)
 
-    res.status(200).json({
+    return res.status(200).json({
       ok: true,
       uid: user.id,
       name: user.name,
@@ -76,7 +76,7 @@ const loginUser = async (req, res = response) => {
     })
   } catch (error) {
     console.log(error)
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       msg: 'Please contact the administrator.'
     })
@@ -87,7 +87,7 @@ const revalidateToken = async (req, res = response) => {
   const { uid, name } = req
   const token = await generateJWT(uid, name)
 
-  res.json({ ok: true, token })
+  return res.json({ ok: true, token })
 }
 
 export { createUser, loginUser, revalidateToken }

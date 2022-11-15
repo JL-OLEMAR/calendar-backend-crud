@@ -4,7 +4,7 @@ import { EventModel } from '../models/event.js'
 const getEvents = async (req, res = response) => {
   const events = await EventModel.find().populate('user', 'name')
 
-  res.json({
+  return res.json({
     ok: true,
     events
   })
@@ -18,13 +18,13 @@ const createEvent = async (req, res = response) => {
 
     const eventSaved = await event.save()
 
-    res.json({
+    return res.json({
       ok: true,
       event: eventSaved
     })
   } catch (error) {
     console.log(error)
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       msg: 'Please contact the administrator.'
     })
@@ -39,14 +39,14 @@ const updateEvent = async (req, res = response) => {
     const event = await EventModel.findById(eventId)
 
     if (!event) {
-      res.status(404).json({
+      return res.status(404).json({
         ok: false,
         msg: 'Event does not exist for that id.'
       })
     }
 
     if (event.user.toString() !== userUid) {
-      res.status(401).json({
+      return res.status(401).json({
         ok: false,
         msg: "You don't have privilege to edit this event"
       })
@@ -57,13 +57,13 @@ const updateEvent = async (req, res = response) => {
       new: true
     })
 
-    res.json({
+    return res.json({
       ok: true,
       event: updatedEvent
     })
   } catch (error) {
     console.log(error)
-    res.status(500).json({
+    return res.status(500).json({
       ok: false,
       msg: 'Please contact the administrator.'
     })
