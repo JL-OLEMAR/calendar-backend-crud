@@ -87,7 +87,7 @@ const revalidateToken = async (req, res = response) => {
   const { uid, name } = req
   const token = await generateJWT(uid, name)
 
-  return res.json({ ok: true, token })
+  return res.json({ ok: true, uid, name, token })
 }
 
 export { createUser, loginUser, revalidateToken }
